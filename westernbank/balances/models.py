@@ -4,10 +4,10 @@ from django.utils import timezone
 
 # Create your models here.
 class Account(models.Model):
-    owner = models.ForeignKey('auth.User', related_name='accounts', on_delete=models.CASCADE)
+    owner = models.OneToOneField('auth.User', related_name='accounts', on_delete=models.CASCADE)
     opening_date = models.DateTimeField(default=timezone.now)
     balance = models.DecimalField(max_digits=10, decimal_places=2)   
-    debit_card = models.ForeignKey('DebitCard', on_delete=models.SET_NULL, null=True, blank=True)
+    debit_card = models.OneToOneField('DebitCard', on_delete=models.SET_NULL, null=True, blank=True)
     credit_card = models.OneToOneField('CreditCard', on_delete=models.SET_NULL, null=True, blank=True)
     interest_rate = models.DecimalField(max_digits=5, decimal_places=2, default=0)
     CURRENCY_CHOICES = (

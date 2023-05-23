@@ -50,27 +50,3 @@ class AccountSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Account
         fields = ['owner', 'opening_date', 'balance', 'debit_card', 'credit_card', 'interest_rate', 'currency', 'status']
-
-    # def create(self, validated_data):
-    #     # Handle user/owner
-    #     user_data = validated_data.pop('owner')
-    #     user, created = User.objects.get_or_create(username=user_data['username'], defaults=user_data)
-        
-    #     # Handle debit card
-    #     debit_card_data = validated_data.pop('debit_card', None)
-    #     if debit_card_data:
-    #         debit_card = DebitCard.objects.create(**debit_card_data)
-    #     else:
-    #         debit_card = None
-        
-    #     # Handle credit card
-    #     credit_card_data = validated_data.pop('credit_card', None)
-    #     if credit_card_data:
-    #         credit_card = CreditCard.objects.create(**credit_card_data)
-    #     else:
-    #         credit_card = None
-
-    #     # Create the account
-    #     account = Account.objects.create(owner=user, debit_card=debit_card, credit_card=credit_card, **validated_data)
-    #     return account
-
